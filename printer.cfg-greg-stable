@@ -1,0 +1,180 @@
+# Support for the green Tevo Tarantula Pro. To use this config, the firmware
+# should be compiled for the AVR atmega2560.
+# Note that this config file is for the "old green" Tarantula pro, with a
+# MKS Gen_l 8-bit board.
+# It _will not_ work out of the box for the "new orange" Tarantula pro with a
+# MKS Sgen_l 32-bit board.
+
+# See docs/Config_Reference.md for a description of parameters.
+
+[include mainsail.cfg]
+
+[mcu]
+serial: /dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0
+
+[printer]
+kinematics: delta
+max_velocity: 400
+max_accel: 3000
+max_z_velocity: 50
+max_z_accel: 100
+minimum_z_position: -5
+#delta_radius: 140
+
+[stepper_a]
+step_pin: PF0
+dir_pin: !PF1
+enable_pin: !PD7
+microsteps: 16
+rotation_distance: 32
+endstop_pin: PE4
+#position_endstop: 280
+homing_speed: 60
+#arm_length: 267
+
+[stepper_b]
+step_pin: PF6
+dir_pin: !PF7
+enable_pin: !PF2
+microsteps: 16
+rotation_distance: 32
+endstop_pin: PJ0
+#position_endstop: 280
+homing_speed: 60
+#arm_length: 267
+
+[stepper_c]
+step_pin: PL3
+dir_pin: !PL1
+enable_pin: !PK0
+microsteps: 16
+rotation_distance: 32
+endstop_pin: PD2
+#position_endstop: 280
+homing_speed: 60
+#arm_length: 267
+
+[delta_calibrate]
+radius: 80
+speed: 10
+horizontal_move_z: 20
+# Enable for dual-z addon
+#[stepper_z1]
+#step_pin: PC1
+#dir_pin: PC3
+#enable_pin: !PC7
+#microsteps: 16
+#rotation_distance: 8
+
+[probe]
+pin: !PD3
+#z_offset: 0
+samples: 1
+
+[extruder]
+step_pin: PA4
+dir_pin: PA6
+enable_pin: !PA2
+microsteps: 16
+rotation_distance: 20.34
+nozzle_diameter: 0.400
+filament_diameter: 1.75
+min_extrude_temp: 0
+max_extrude_only_distance: 101
+
+heater_pin: PB4
+sensor_type: EPCOS 100K B57560G104F
+sensor_pin: PK5
+control: pid
+pid_Kp: 22.5
+pid_Ki: 1.78
+pid_Kd: 74.16
+min_temp: 0
+max_temp: 220
+
+[heater_bed]
+heater_pin: PH5
+sensor_type: EPCOS 100K B57560G104F
+sensor_pin: PK6
+#control: watermark
+min_temp: 0
+max_temp: 110
+
+[fan]
+pin: PH6
+
+[heater_fan nozzle_fan]
+pin: PH4
+
+[display]
+lcd_type: hd44780
+rs_pin: PH1
+e_pin: PH0
+d4_pin: PA1
+d5_pin: PA3
+d6_pin: PA5
+d7_pin: PA7
+encoder_pins: ^PC6, ^PC4
+click_pin: ^!PC2
+kill_pin: ^!PG0
+
+# rs_pin: EXP1_4
+# e_pin: EXP1_3
+# d4_pin: EXP1_5
+# d5_pin: EXP1_6
+# d6_pin: EXP1_7
+# d7_pin: EXP1_8
+# encoder_pins: ^EXP2_3, ^EXP2_5
+# click_pin: ^!EXP1_2
+#kill_pin: ^!EXP2_8
+
+[output_pin beeper]
+pin: PC0
+
+
+
+#*# <---------------------- SAVE_CONFIG ---------------------->
+#*# DO NOT EDIT THIS BLOCK OR BELOW. The contents are auto-generated.
+#*#
+#*# [probe]
+#*# z_offset = -0.470
+#*#
+#*# [printer]
+#*# delta_radius = 140.873755
+#*#
+#*# [stepper_a]
+#*# angle = 210.260070
+#*# arm_length = 267.000000
+#*# position_endstop = 279.771556
+#*#
+#*# [stepper_b]
+#*# angle = 329.936598
+#*# arm_length = 267.000000
+#*# position_endstop = 282.109492
+#*#
+#*# [stepper_c]
+#*# angle = 90.000000
+#*# arm_length = 267.000000
+#*# position_endstop = 279.563661
+#*#
+#*# [delta_calibrate]
+#*# height0 = -0.47
+#*# height0_pos = 28094.000,28094.000,28094.000
+#*# height1 = -0.47
+#*# height1_pos = 31994.000,31958.000,24830.000
+#*# height2 = -0.47
+#*# height2_pos = 26970.000,34509.000,26952.000
+#*# height3 = -0.47
+#*# height3_pos = 25055.000,31400.000,31389.000
+#*# height4 = -0.47
+#*# height4_pos = 27107.000,27128.000,32737.000
+#*# height5 = -0.47
+#*# height5_pos = 30953.000,25419.000,30971.000
+#*# height6 = -0.47
+#*# height6_pos = 33642.000,27079.000,27087.000
+#*#
+#*# [heater_bed]
+#*# control = pid
+#*# pid_kp = 57.969
+#*# pid_ki = 2.135
+#*# pid_kd = 393.465
